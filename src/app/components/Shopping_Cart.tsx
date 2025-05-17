@@ -130,9 +130,11 @@ export default function ShoppingCart() {
             <span>Total</span>
             <span>Rs {total}</span>
           </div>
+          <Link href="/checkout">
           <button className="w-full bg-green-500 text-white py-2 rounded-md mb-2 font-medium text-base cursor-pointer">
             Go to Checkout
           </button>
+          </Link>
           <Link href="/">
             <button className="w-full text-center text-gray-600 font-medium text-base cursor-pointer">
               Continue Shopping

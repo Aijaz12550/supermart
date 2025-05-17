@@ -13,6 +13,9 @@ import GadgetSecond from "../assets/gadget_and_accessories_second.jpg";
 import GadgetThird from "../assets/gadget_and_accessories_third.jpg";
 import GadgetFourth from "../assets/gadget_and_accessories_fourth.jpg";
 import GadgetFifth from "../assets/gadget_and_accessories_fifth.jpg";
+import redshirt from "../assets/red-shirt.jpg"
+import blueshirt from "../assets/blue-shirt.jpg"
+import brownshirt from "../assets/brown-shirt.jpg"
 import { ReactNode } from "react";
 import { HealthIcon, InstagramIcon, KidsIcon, LifeStyleIcon, MenFashionIcon, PhoneIcon, TikTokIcon, TwitterIcon, WomenFashionIcon } from "../components/Icon";
 
@@ -194,3 +197,42 @@ export  const socialIcons = [
     { Icon: TwitterIcon },
     { Icon: TikTokIcon },
   ];
+
+
+export const Fashionproducts = [
+  {
+    id: 1,
+    name: "Anker Power Bank with two type c ports",
+    description: "",
+    price: "Rs. 500",
+    image: redshirt,
+  },
+  {
+    id: 2,
+    name: "Anker Beats Super Bass Headphones",
+    description: "",
+    price: "Rs. 500",
+    image: blueshirt,
+  },
+  {
+    id: 3,
+    name: "Anker Beats Super Bass Headphones",
+    description: "",
+    price: "Rs. 500",
+    image: brownshirt,
+  },
+  {
+    id: 4,
+    name: "Anker Beats Super Bass Headphones",
+    description: "",
+    price: "Rs. 500",
+    image: redshirt,
+  },
+  {
+    id: 5,
+    name: "Anker Beats Super Bass Headphones",
+    description: "",
+    price: "Rs. 500",
+    image: blueshirt,
+  },
+];
