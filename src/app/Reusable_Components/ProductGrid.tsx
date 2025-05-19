@@ -2,13 +2,14 @@
 import Image, { StaticImageData } from "next/image";
 import Arrowslider from "../Reusable_Components/Arrow-Slider";
 import { useCart } from "../context/CartContext";
+import { useState } from "react";
 
 interface Product {
   id: number;
   name: string;
-  image: StaticImageData; // you can replace `any` with StaticImageData if using imported images
+  image: StaticImageData;
   description?: string;
-  price: string; // Rs 200
+  price: string; // e.g., "Rs 200"
 }
 
 interface ProductGridProps {
@@ -18,9 +19,25 @@ interface ProductGridProps {
 
 export default function ProductGrid({ title, products }: ProductGridProps) {
   const { addToCart } = useCart();
+  const [loadingId, setLoadingId] = useState<number | null>(null);
 
   const parsePrice = (priceStr: string): number => {
-    return parseInt(priceStr.replace(/[^\d]/g, ""), 10); // remove Rs and spaces
+    return parseInt(priceStr.replace(/[^\d]/g, ""), 10);
+  };
+
+  const handleAddToCart = async (product: Product) => {
+    setLoadingId(product.id);
+    await new Promise((resolve) => setTimeout(resolve, 800)); // simulate delay
+    addToCart({
+      id: product.id,
+      name: product.name,
+      weight: 500,
+      price: parsePrice(product.price),
+      quantity: 1,
+      inStock: true,
+      image: product.image,
+    });
+    setLoadingId(null);
   };
 
   return (
@@ -48,24 +65,36 @@ export default function ProductGrid({ title, products }: ProductGridProps) {
                 </p>
               )}
               <div className="flex justify-between items-center mt-2">
-                <span className="font-bold text-gray-900">
-                  {product.price}
-                </span>
+                <span className="font-bold text-gray-900">{product.price}</span>
                 <button
-                  onClick={() =>
-                    addToCart({
-                      id: product.id,
-                      name: product.name,
-                      weight: 500, // or dynamic if available
-                      price: parsePrice(product.price),
-                      quantity: 1,
-                      inStock: true,
-                      image: product.image,
-                    })
-                  }
-                  className="text-black text-xs py-1 px-2 rounded transition-colors duration-200 border-2 border-gray-100 cursor-pointer"
+                  onClick={() => handleAddToCart(product)}
+                  disabled={loadingId === product.id}
+                  className="text-black text-xs py-1 px-2 rounded transition-colors duration-200 border-2 border-gray-100 cursor-pointer flex items-center gap-2"
                 >
-                  Add to cart
+                  {loadingId === product.id ? (
+                    <svg
+                      className="animate-spin h-4 w-4 text-black"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      />
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M12 2a10 10 0 00-3.95.81l.7 1.87A8 8 0 0112 4V2z"
+                      />
+                    </svg>
+                  ) : (
+                    "Add to cart"
+                  )}
                 </button>
               </div>
             </div>

@@ -1,12 +1,13 @@
 import React from "react";
-import ProductPage from "../components/Product-Page";
-import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Banner from "../components/Banner";
 import FeaturesSection from "../components/Feature-Section";
 import Suggestion from "../components/Suggestion";
+import ProductPage from "@/app/components/Product-Page";
 
-const Page = () => {
+
+const Page = ({ params }: { params: { id: string } }) => {
+  console.log("Params----->",params)
   return (
     <div>
       <ProductPage />
