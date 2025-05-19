@@ -3,6 +3,7 @@ import Image, { StaticImageData } from "next/image";
 import Arrowslider from "../Reusable_Components/Arrow-Slider";
 import { useCart } from "../context/CartContext";
 import { useState } from "react";
+import { LoaderIcon } from "../components/Icon";
 
 interface Product {
   id: number;
@@ -71,30 +72,7 @@ export default function ProductGrid({ title, products }: ProductGridProps) {
                   disabled={loadingId === product.id}
                   className="text-black text-xs py-1 px-2 rounded transition-colors duration-200 border-2 border-gray-100 cursor-pointer flex items-center gap-2"
                 >
-                  {loadingId === product.id ? (
-                    <svg
-                      className="animate-spin h-4 w-4 text-black"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                    >
-                      <circle
-                        className="opacity-25"
-                        cx="12"
-                        cy="12"
-                        r="10"
-                        stroke="currentColor"
-                        strokeWidth="4"
-                      />
-                      <path
-                        className="opacity-75"
-                        fill="currentColor"
-                        d="M12 2a10 10 0 00-3.95.81l.7 1.87A8 8 0 0112 4V2z"
-                      />
-                    </svg>
-                  ) : (
-                    "Add to cart"
-                  )}
+                  {loadingId === product.id ? <LoaderIcon /> : "Add to cart"}
                 </button>
               </div>
             </div>

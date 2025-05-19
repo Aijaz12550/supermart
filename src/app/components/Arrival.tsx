@@ -2,6 +2,8 @@
 import Image, { StaticImageData } from 'next/image';
 import Arrowslider from "../Reusable_Components/Arrow-Slider";
 import { useCart } from '../context/CartContext';
+import { useState } from 'react';
+import { LoaderIcon } from './Icon';
 
 
 interface Product {
@@ -20,9 +22,25 @@ interface ProductGridProps {
 
 export default function Arrival({ title, products }: ProductGridProps) {
   const { addToCart } = useCart();
-
+  const [loadingId, setLoadingId] = useState<number | null>(null);
+  
   const parsePrice = (priceStr: string): number => {
     return parseInt(priceStr.replace(/[^\d]/g, ""), 10); // remove Rs and spaces
+  };
+
+   const handleAddToCart = async (product: Product) => {
+    setLoadingId(product.id);
+    await new Promise((resolve) => setTimeout(resolve, 800)); // simulate delay
+    addToCart({
+      id: product.id,
+      name: product.name,
+      weight: 500,
+      price: parsePrice(product.price),
+      quantity: 1,
+      inStock: true,
+      image: product.image,
+    });
+    setLoadingId(null);
   };
 
   const categories=["All","Groceries","Electronics","Fashion","Healthcare"]
@@ -62,21 +80,16 @@ export default function Arrival({ title, products }: ProductGridProps) {
               )}
               <div className="flex justify-between items-center mt-2">
                 <span className="font-semibold text-gray-900 text-base">{product.price}</span>
-                <button 
-                  className="text-black text-sm font-light py-1 px-2 rounded border-2 border-gray-100 cursor-pointer"
-                  onClick={() =>
-                    addToCart({
-                      id: product.id,
-                      name: product.name,
-                      weight: 500, // or dynamic if available
-                      price: parsePrice(product.price),
-                      quantity: 1,
-                      inStock: true,
-                      image: product.image,
-                    })
-                  }
+                <button
+                  onClick={() => handleAddToCart(product)}
+                  disabled={loadingId === product.id}
+                  className="text-black text-xs py-1 px-2 rounded transition-colors duration-200 border-2 border-gray-100 cursor-pointer flex items-center gap-2"
                 >
-                  Add to cart
+                  {loadingId === product.id ? (
+                    <LoaderIcon/>
+                  ) : (
+                    "Add to cart"
+                  )}
                 </button>
               </div>
             </div>
