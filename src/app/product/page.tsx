@@ -6,8 +6,7 @@ import Suggestion from "../components/Suggestion";
 import ProductPage from "@/app/components/Product-Page";
 
 
-const Page = ({ params }: { params: { id: string } }) => {
-  console.log("Params----->",params)
+const Page = () => {
   return (
     <div>
       <ProductPage />

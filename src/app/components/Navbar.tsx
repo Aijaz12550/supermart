@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Logo from "../assets/logo.png";
+import { useRouter } from "next/navigation";  
 
 import {
   SearchIcon,
@@ -22,8 +23,18 @@ import {
 import { navLinks, socialIcons } from "../assets/data";
 
 export default function Navbar() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const router = useRouter();
+
   const [isOpen, setIsOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const handleSearch = () => {
+    if (searchTerm.trim()) {
+      router.push(`/search?query=${encodeURIComponent(searchTerm.trim())}`);
+    }
+  };
+
   return (
     <header className="w-full">
       {/* Top navbar */}
@@ -51,12 +62,14 @@ export default function Navbar() {
               </div>
               <input
                 type="text"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-full py-2 pl-28 pr-10 text-sm border border-gray-300 rounded-l-md focus:outline-none"
                 placeholder="what are you looking for..."
               />
             </div>  
             {/* Search button */}
-            <button className="px-2 py-2 text-xs text-white bg-orange-500 rounded-r-md hover:bg-orange-600 transition-colors duration-200 sm:px-4 sm:text-sm">
+            <button onClick={handleSearch} className="px-2 py-2 text-xs text-white bg-orange-500 rounded-r-md hover:bg-orange-600 transition-colors duration-200 sm:px-4 sm:text-sm">
               <SearchIcon />
             </button>
           </div>
