@@ -1,9 +1,8 @@
 // app/search/page.tsx
 "use client";
 import { useSearchParams } from "next/navigation";
-import ProductGrid from "../Reusable_Components/ProductGrid";
 import { Beautyproducts, Fashionproducts, Gadgetproducts, products } from "../assets/data";
-import Arrival from "../components/Arrival";
+import SearchProducts from "../Reusable_Components/SearchProduct";
 
 export default function SearchResultsPage() {
   const searchParams = useSearchParams();
@@ -21,7 +20,7 @@ export default function SearchResultsPage() {
 
   return (
     <>
-    <ProductGrid
+    <SearchProducts
       title={`Search Results for "${query}"`}
       products={filteredProducts}
       />
