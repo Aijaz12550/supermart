@@ -1,12 +1,12 @@
-"use client"
-import React, { useState } from 'react'
+"use client";
+import React, { useState } from "react";
 
 const BillingForm = () => {
-    const [billingMethod, setBillingMethod] = useState("cod")
-    
+  const [billingMethod, setBillingMethod] = useState("cod");
+
   return (
     <>
-     <section className="mb-6">
+      <section className="mb-6">
         <h2 className="text-lg font-medium mb-3">Billing Address</h2>
 
         <div>
@@ -35,9 +35,11 @@ const BillingForm = () => {
           </label>
         </div>
       </section>
-      
+      <button className="w-full bg-green-500 hover:bg-green-600 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
+        Complete order
+      </button>
     </>
-  )
-}
+  );
+};
 
-export default BillingForm
+export default BillingForm;

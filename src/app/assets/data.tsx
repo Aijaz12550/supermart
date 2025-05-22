@@ -187,7 +187,7 @@ export const navLinks = [
     { href: "/", text: "Home" },
     { href: "/categories", text: "Categories" },
     { href: "/product", text: "Shop" },
-    { href: "/hot-offers", text: "Hot Offers" },
+    { href: "/track", text: "Hot Offers" },
     { href: "/checkout", text: "Contact Us" },
   ];
 
