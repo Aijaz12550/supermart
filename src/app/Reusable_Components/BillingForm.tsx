@@ -10,7 +10,10 @@ const BillingForm = () => {
         <h2 className="text-lg font-medium mb-3">Billing Address</h2>
 
         <div>
-          <label className="flex items-center p-3 border border-gray-300 rounded-md cursor-pointer mb-2">
+          <label
+            className={`flex items-center p-3 border rounded-md cursor-pointer mb-2
+    ${billingMethod === "cod" ? "border-green-500" : "border-gray-300"}`}
+          >
             <input
               type="radio"
               name="billing"
@@ -22,7 +25,10 @@ const BillingForm = () => {
             <span className="ml-2">Cash On Delivery (COD)</span>
           </label>
 
-          <label className="flex items-center p-3 border border-gray-300 rounded-md cursor-pointer">
+          <label
+            className={`flex items-center p-3 border rounded-md cursor-pointer mb-2
+    ${billingMethod === "card" ? "border-green-500" : "border-gray-300"}`}
+          >
             <input
               type="radio"
               name="billing"
