@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import { CartProvider } from "./context/CartContext";
-import { ProductProvider } from "./context/ProductContext";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -25,12 +24,10 @@ export default function RootLayout({
       <body   
       className={`${inter.variable} font-sans antialiased`}
       >
-        <ProductProvider>
           <CartProvider>
             <Navbar/>
             {children}
           </CartProvider>
-        </ProductProvider>
       </body>
     </html>
   );
