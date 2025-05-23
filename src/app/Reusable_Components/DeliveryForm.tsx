@@ -1,6 +1,5 @@
 "use clientS"
 import React, { useState } from 'react'
-import { ChevronDown, Eye } from "lucide-react"
 import { DropDownIcon, InfoIcon } from '../components/Icon'
 
 

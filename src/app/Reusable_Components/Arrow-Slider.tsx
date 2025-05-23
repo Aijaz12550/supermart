@@ -1,17 +1,17 @@
-import { ChevronLeft, ChevronRight } from 'lucide-react'
 import React from 'react'
+import { LeftArrowIcon, RightArrowIcon } from '../components/Icon'
 
 const Arrowslider = () => {
   return (
     <div>
       <div className="flex justify-start items-center mt-8 space-x-4">
           <button >
-            <ChevronLeft size={24} />
+            <LeftArrowIcon/>
           </button>
 
           <button
           >
-            <ChevronRight size={24} />
+            <RightArrowIcon/>
           </button>
           <div className="w-full h-1 rounded-full">
             <div
