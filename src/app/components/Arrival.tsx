@@ -4,14 +4,15 @@ import Arrowslider from "../Reusable_Components/Arrow-Slider";
 import { useCart } from '../context/CartContext';
 import { useState } from 'react';
 import { LoaderIcon } from './Icon';
-
+import { useRouter } from 'next/navigation';
+import { useProduct } from '../context/ProductContext';
 
 interface Product {
   id: number;
   name: string;
-  image: StaticImageData; // you can replace `any` with StaticImageData if using imported images
+  image: StaticImageData;
   description?: string;
-  price: string; // Rs 200
+  price: string;
 }
 
 interface ProductGridProps {
@@ -19,18 +20,19 @@ interface ProductGridProps {
   products: Product[];
 }
 
-
 export default function Arrival({ title, products }: ProductGridProps) {
   const { addToCart } = useCart();
   const [loadingId, setLoadingId] = useState<number | null>(null);
+  const router = useRouter();
+  const { setSelectedProduct } = useProduct();
   
   const parsePrice = (priceStr: string): number => {
-    return parseInt(priceStr.replace(/[^\d]/g, ""), 10); // remove Rs and spaces
+    return parseInt(priceStr.replace(/[^\d]/g, ""), 10);
   };
 
-   const handleAddToCart = async (product: Product) => {
+  const handleAddToCart = async (product: Product) => {
     setLoadingId(product.id);
-    await new Promise((resolve) => setTimeout(resolve, 800)); // simulate delay
+    await new Promise((resolve) => setTimeout(resolve, 800));
     addToCart({
       id: product.id,
       name: product.name,
@@ -43,13 +45,31 @@ export default function Arrival({ title, products }: ProductGridProps) {
     setLoadingId(null);
   };
 
-  const categories=["All","Groceries","Electronics","Fashion","Healthcare"]
+  const handleProductClick = (product: Product) => {
+    const detailedProduct = {
+      id: product.id.toString(),
+      name: product.name,
+      price: parsePrice(product.price),
+      description: product.description || 'No description available',
+      image: product.image.src,
+      thumbnails: [product.image.src, product.image.src, product.image.src, product.image.src],
+      weight: ['250 G', '500 G', '1kg'],
+      inStock: true,
+      delivery: 'Nationwide',
+      shippedBy: 'SuperMart'
+    };
+    
+    setSelectedProduct(detailedProduct);
+    router.push('/product');
+  };
+
+  const categories = ["All", "Groceries", "Electronics", "Fashion", "Healthcare"];
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className='flex justify-between'>
-      <h1 className="text-4xl font-bold  mb-8">New Arrival</h1>
-      <div className="space-x-4">
+      <div className='flex justify-between'>
+        <h1 className="text-4xl font-bold mb-8">New Arrival</h1>
+        <div className="space-x-4">
           {categories.map((category) => (
             <button
               key={category}
@@ -59,29 +79,32 @@ export default function Arrival({ title, products }: ProductGridProps) {
             </button>
           ))}
         </div>
-        </div>
+      </div>
       
-      
-      {/* Products grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
         {products.map((product) => (
-          <div key={product.id} className=" rounded-lg overflow-hidden shadow-md ">
+          <div 
+            key={product.id} 
+            className="rounded-lg overflow-hidden shadow-md cursor-pointer hover:shadow-lg transition-shadow duration-300"
+            onClick={() => handleProductClick(product)}
+          >
             <div className="p-4">
-                {/* <div className='bg-gray-100 py-4 px-2'> */}
               <Image
                 src={product.image} 
                 alt={product.name} 
                 className="w-full h-52 object-contain mb-4"
               />
-              {/* </div> */}
-              <h3 className="font-light  text-gray-800 text-base h-10">{product.name}</h3>
+              <h3 className="font-light text-gray-800 text-base h-10">{product.name}</h3>
               {product.description && (
                 <p className="text-gray-600 text-xs mb-2">{product.description}</p>
               )}
               <div className="flex justify-between items-center mt-2">
                 <span className="font-semibold text-gray-900 text-base">{product.price}</span>
                 <button
-                  onClick={() => handleAddToCart(product)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleAddToCart(product);
+                  }}
                   disabled={loadingId === product.id}
                   className="text-black text-xs py-1 px-2 rounded transition-colors duration-200 border-2 border-gray-100 cursor-pointer flex items-center gap-2"
                 >
