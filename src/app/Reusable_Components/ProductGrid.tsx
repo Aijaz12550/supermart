@@ -4,6 +4,8 @@ import Arrowslider from "../Reusable_Components/Arrow-Slider";
 import { useCart } from "../context/CartContext";
 import { useState } from "react";
 import { LoaderIcon } from "../components/Icon";
+import { useRouter } from "next/navigation";
+import { useProduct } from "../context/ProductContext";
 
 interface Product {
   id: number;
@@ -21,6 +23,8 @@ interface ProductGridProps {
 export default function ProductGrid({ title, products }: ProductGridProps) {
   const { addToCart } = useCart();
   const [loadingId, setLoadingId] = useState<number | null>(null);
+  const router = useRouter();
+  const { setSelectedProduct } = useProduct();
 
   const parsePrice = (priceStr: string): number => {
     return parseInt(priceStr.replace(/[^\d]/g, ""), 10);
@@ -41,6 +45,25 @@ export default function ProductGrid({ title, products }: ProductGridProps) {
     setLoadingId(null);
   };
 
+  const handleProductClick = (product: Product) => {
+    // Convert the product to match the ProductContext format
+    const detailedProduct = {
+      id: product.id.toString(),
+      name: product.name,
+      price: parsePrice(product.price),
+      description: product.description || 'No description available',
+      image: product.image.src,
+      thumbnails: [product.image.src, product.image.src, product.image.src, product.image.src],
+      weight: ['250 G', '500 G', '1kg'],
+      inStock: true,
+      delivery: 'Nationwide',
+      shippedBy: 'SuperMart'
+    };
+    
+    setSelectedProduct(detailedProduct);
+    router.push('/product');
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <h1 className="text-3xl font-bold mb-8">{title}</h1>
@@ -49,7 +72,8 @@ export default function ProductGrid({ title, products }: ProductGridProps) {
         {products.map((product) => (
           <div
             key={product.id}
-            className="rounded-lg overflow-hidden shadow-md"
+            className="rounded-lg overflow-hidden shadow-md cursor-pointer hover:shadow-lg transition-shadow duration-300"
+            onClick={() => handleProductClick(product)}
           >
             <div className="p-4">
               <Image
@@ -68,7 +92,10 @@ export default function ProductGrid({ title, products }: ProductGridProps) {
               <div className="flex justify-between items-center mt-2">
                 <span className="font-bold text-gray-900">{product.price}</span>
                 <button
-                  onClick={() => handleAddToCart(product)}
+                  onClick={(e) => {
+                    e.stopPropagation(); // Prevent triggering the parent div's onClick
+                    handleAddToCart(product);
+                  }}
                   disabled={loadingId === product.id}
                   className="text-black text-xs py-1 px-2 rounded transition-colors duration-200 border-2 border-gray-100 cursor-pointer flex items-center gap-2"
                 >
