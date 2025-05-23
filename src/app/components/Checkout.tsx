@@ -17,7 +17,7 @@ export default function CheckoutForm() {
           <input
             type="text"
             placeholder="Email or Mobile Phone Number"
-            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-400"
+            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
           />
         </div>
         <div className="flex items-center">
@@ -26,7 +26,7 @@ export default function CheckoutForm() {
             id="emailSubscription"
             checked={emailSubscription}
             onChange={() => setEmailSubscription(!emailSubscription)}
-            className="h-4 w-4 text-orange-500 border-gray-300 rounded focus:ring-orange-500"
+            className="h-4 w-4 text-orange-500 border-gray-300 rounded"
           />
           <label htmlFor="emailSubscription" className="ml-2 text-sm">
             Email me with news and offers

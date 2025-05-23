@@ -28,12 +28,12 @@ const DeliveryForm = () => {
           <input
             type="text"
             placeholder="First Name"
-            className="flex-1 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-400"
+            className="flex-1 p-3 border border-gray-300 rounded-md  focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
           />
           <input
             type="text"
             placeholder="Last Name"
-            className="flex-1 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-400"
+            className="flex-1 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
           />
         </div>
 
@@ -42,7 +42,7 @@ const DeliveryForm = () => {
           <input
             type="text"
             placeholder="Address"
-            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-400"
+            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
           />
         </div>
 
@@ -50,7 +50,7 @@ const DeliveryForm = () => {
           <input
             type="text"
             placeholder="Apartment, suite etc."
-            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-400"
+            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
           />
         </div>
 
@@ -58,12 +58,12 @@ const DeliveryForm = () => {
           <input
             type="text"
             placeholder="City"
-            className="flex-1 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-400"
+            className="flex-1 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
           />
           <input
             type="text"
             placeholder="Postal Code"
-            className="flex-1 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-400"
+            className="flex-1 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
           />
         </div>
 
@@ -72,7 +72,7 @@ const DeliveryForm = () => {
           <input
             type="text"
             placeholder="Phone"
-            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-400 pr-10"
+            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent pr-10"
           />
           <InfoIcon/>
         </div>

@@ -4,6 +4,17 @@ import React, { useState } from "react";
 const BillingForm = () => {
   const [billingMethod, setBillingMethod] = useState("cod");
 
+  const generateShortTrackingId = () => {
+  const randomPart = Math.random().toString(36).substring(2, 6).toUpperCase()
+  return `${randomPart}`
+}
+
+  const handleCompleteOrder = () => {
+  const trackingId = generateShortTrackingId()
+  localStorage.setItem('tracking_id', trackingId)
+  alert(`Order placed! Your tracking ID is: ${trackingId}`)
+  }
+
   return (
     <>
       <section className="mb-6">
@@ -41,7 +52,9 @@ const BillingForm = () => {
           </label>
         </div>
       </section>
-      <button className="w-full bg-green-500 hover:bg-green-600 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
+      <button 
+      onClick={handleCompleteOrder}
+      className="w-full bg-green-500 hover:bg-green-600 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
         Complete order
       </button>
     </>
