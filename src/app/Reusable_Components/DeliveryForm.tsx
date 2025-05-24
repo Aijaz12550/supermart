@@ -1,11 +1,15 @@
-"use clientS"
-import React, { useState } from 'react'
-import { DropDownIcon, InfoIcon } from '../components/Icon'
-
+"use clientS";
+import React, { useState } from "react";
+import { DropDownIcon, InfoIcon } from "../components/Icon";
+import { useFormContext } from "react-hook-form";
 
 const DeliveryForm = () => {
-    const [saveInformation, setSaveInformation] = useState(false)
-    
+  const [saveInformation, setSaveInformation] = useState(false);
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
+
   return (
     <>
       <section className="mb-6">
@@ -13,24 +17,23 @@ const DeliveryForm = () => {
 
         {/* Country/Region Dropdown */}
         <div className="relative mb-3">
-          <div
-            className="w-full p-3 border border-gray-300 rounded-md flex justify-between items-center cursor-pointer"
-          >
+          <div className="w-full p-3 border border-gray-300 rounded-md flex justify-between items-center cursor-pointer">
             <span className="text-gray-500">Country/Region</span>
-            <DropDownIcon/>
+            <DropDownIcon />
           </div>
-
         </div>
 
         {/* Name Fields */}
         <div className="flex flex-col md:flex-row gap-3 mb-3">
           <input
             type="text"
+            {...register("firstName", { required: "First Name is required" })}
             placeholder="First Name"
             className="flex-1 p-3 border border-gray-300 rounded-md  focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
           />
           <input
             type="text"
+            {...register("lastName", { required: "Last Name is required" })}
             placeholder="Last Name"
             className="flex-1 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
           />
@@ -40,6 +43,7 @@ const DeliveryForm = () => {
         <div className="mb-3">
           <input
             type="text"
+            {...register("address", { required: "Address is required" })}
             placeholder="Address"
             className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
           />
@@ -47,6 +51,7 @@ const DeliveryForm = () => {
 
         <div className="mb-3">
           <input
+            {...register("apartment", { required: "Apartment is required" })}
             type="text"
             placeholder="Apartment, suite etc."
             className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
@@ -56,11 +61,13 @@ const DeliveryForm = () => {
         <div className="flex flex-col md:flex-row gap-3 mb-3">
           <input
             type="text"
+            {...register("city", { required: "City is required" })}
             placeholder="City"
             className="flex-1 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
           />
           <input
             type="text"
+            {...register("postalCode", { required: "Postal Code is required" })}
             placeholder="Postal Code"
             className="flex-1 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
           />
@@ -70,10 +77,11 @@ const DeliveryForm = () => {
         <div className="relative mb-3">
           <input
             type="text"
+            {...register("phone", { required: "Phone is required" })}
             placeholder="Phone"
             className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent pr-10"
           />
-          <InfoIcon/>
+          <InfoIcon />
         </div>
 
         <div className="flex items-center">
@@ -90,7 +98,7 @@ const DeliveryForm = () => {
         </div>
       </section>
     </>
-  )
-}
+  );
+};
 
-export default DeliveryForm
+export default DeliveryForm;

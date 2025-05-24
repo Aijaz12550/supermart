@@ -29,28 +29,28 @@ interface Category {
 // Product data array
 export const products = [
   {
-    id: 1,
+    id: 16,
     name: "Fresh Street Frozen Broccoli, 500g",
     description: "",
     price: "Rs. 500",
     image: CauliFlower,
   },
   {
-    id: 2,
+    id: 17,
     name: "Fresh Street Frozen Broccoli, 500g",
     description: "",
     price: "Rs. 500",
     image: Choclate,
   },
   {
-    id: 3,
+    id: 18,
     name: "Fresh Street Frozen Broccoli, 500g",
     description: "",
     price: "Rs. 500",
     image: ChocoChips,
   },
   {
-    id: 4,
+    id: 19,
     name: "Fresh Street Frozen Broccoli, 500g",
     description: "",
     price: "Rs. 500",
@@ -60,35 +60,35 @@ export const products = [
 
 export const Beautyproducts = [
   {
-    id: 1,
+    id: 6,
     name: "Anker Power Bank with two type c ports",
     description: "",
     price: "Rs. 500",
     image: BeautyFirst,
   },
   {
-    id: 2,
+    id: 7,
     name: "Anker Beats Super Bass Headphones",
     description: "",
     price: "Rs. 500",
     image: BeautySecond,
   },
   {
-    id: 3,
+    id: 8,
     name: "Anker Beats Super Bass Headphones",
     description: "",
     price: "Rs. 500",
     image: BeautyThird,
   },
   {
-    id: 4,
+    id: 9,
     name: "Anker Beats Super Bass Headphones",
     description: "",
     price: "Rs. 500",
     image: BeautyFourth,
   },
   {
-    id: 5,
+    id: 10,
     name: "Anker Beats Super Bass Headphones",
     description: "",
     price: "Rs. 500",
@@ -190,7 +190,7 @@ export const navLinks = [
     { href: "/track", text: "Hot Offers" },
     { href: "/checkout", text: "Contact Us" },
   ];
-
+ 
   // Social media icons data
 export  const socialIcons = [
     { Icon: InstagramIcon },
@@ -201,35 +201,35 @@ export  const socialIcons = [
 
 export const Fashionproducts = [
   {
-    id: 1,
+    id: 11,
     name: "Anker Power Bank with two type c ports",
     description: "",
     price: "Rs. 500",
     image: redshirt,
   },
   {
-    id: 2,
+    id: 12,
     name: "Anker Beats Super Bass Headphones",
     description: "",
     price: "Rs. 500",
     image: blueshirt,
   },
   {
-    id: 3,
+    id: 13,
     name: "Anker Beats Super Bass Headphones",
     description: "",
     price: "Rs. 500",
     image: brownshirt,
   },
   {
-    id: 4,
+    id: 14,
     name: "Anker Beats Super Bass Headphones",
     description: "",
     price: "Rs. 500",
     image: redshirt,
   },
   {
-    id: 5,
+    id: 15,
     name: "Anker Beats Super Bass Headphones",
     description: "",
     price: "Rs. 500",

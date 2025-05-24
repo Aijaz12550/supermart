@@ -1,7 +1,9 @@
 "use client";
 import React, { useState } from "react";
+import { useFormContext } from "react-hook-form";
 
 const PaymentForm = () => {
+  const { register } = useFormContext()
   const [paymentMethod, setPaymentMethod] = useState("cod");
 
   return (
@@ -19,6 +21,7 @@ const PaymentForm = () => {
           >
             <input
               type="radio"
+              {...register("paymentMethod")}
               name="payment"
               value="cod"
               checked={paymentMethod === "cod"}
@@ -34,6 +37,7 @@ const PaymentForm = () => {
           >
             <input
               type="radio"
+              {...register("paymentMethod")}
               name="payment"
               value="card"
               checked={paymentMethod === "card"}
