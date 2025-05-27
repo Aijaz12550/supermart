@@ -10,7 +10,7 @@ interface CartItem {
   price: number;
   quantity: number;
   inStock: boolean;
-  image: StaticImageData;
+  image: string|StaticImageData;
 }
 
 interface CartContextType {

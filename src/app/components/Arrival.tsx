@@ -4,6 +4,8 @@ import Arrowslider from "../Reusable_Components/Arrow-Slider";
 import { useCart } from '../context/CartContext';
 import { useState } from 'react';
 import { LoaderIcon } from './Icon';
+import { useRouter } from 'next/navigation';
+import { useProduct } from '../context/ProductContext';
 
 interface Product {
   id: number;
@@ -21,7 +23,9 @@ interface ProductGridProps {
 export default function Arrival({ title, products }: ProductGridProps) {
   const { addToCart } = useCart();
   const [loadingId, setLoadingId] = useState<number | null>(null);
-  
+  const router = useRouter();
+  const { setSelectedProduct } = useProduct();
+
   const parsePrice = (priceStr: string): number => {
     return parseInt(priceStr.replace(/[^\d]/g, ""), 10);
   };
@@ -42,6 +46,19 @@ export default function Arrival({ title, products }: ProductGridProps) {
   };
 
   
+
+  const handleProductClick = (product: Product) => {
+    const detailedProduct = {
+      id: product.id.toString(),
+      name: product.name,
+      price: parsePrice(product.price),
+      image: product.image.src,
+      thumbnails: [product.image.src, product.image.src, product.image.src, product.image.src],
+    };
+    
+    setSelectedProduct(detailedProduct);
+    router.push('/product');
+  };
 
   const categories = ["All", "Groceries", "Electronics", "Fashion", "Healthcare"];
 
@@ -66,6 +83,7 @@ export default function Arrival({ title, products }: ProductGridProps) {
           <div 
             key={product.id} 
             className="rounded-lg overflow-hidden shadow-md cursor-pointer hover:shadow-lg transition-shadow duration-300"
+            onClick={() => handleProductClick(product)}
           >
             <div className="p-4">
               <Image
@@ -80,7 +98,10 @@ export default function Arrival({ title, products }: ProductGridProps) {
               <div className="flex justify-between items-center mt-2">
                 <span className="font-semibold text-gray-900 text-base">{product.price}</span>
                 <button
-                  onClick={() => handleAddToCart(product)}
+                onClick={(e) => {
+                    e.stopPropagation();
+                    handleAddToCart(product);
+                  }}
                   disabled={loadingId === product.id}
                   className="text-black text-xs py-1 px-2 rounded transition-colors duration-200 border-2 border-gray-100 cursor-pointer flex items-center gap-2"
                 >
