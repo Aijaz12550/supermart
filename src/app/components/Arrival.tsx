@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { LoaderIcon } from './Icon';
 import { useRouter } from 'next/navigation';
 import { useProduct } from '../context/ProductContext';
+import Link from 'next/link';
 
 interface Product {
   id: number;
@@ -85,6 +86,7 @@ export default function Arrival({ title, products }: ProductGridProps) {
             className="rounded-lg overflow-hidden shadow-md cursor-pointer hover:shadow-lg transition-shadow duration-300"
             onClick={() => handleProductClick(product)}
           >
+                          <Link href={`/product/${product.id}`}>
             <div className="p-4">
               <Image
                 src={product.image} 
@@ -113,6 +115,7 @@ export default function Arrival({ title, products }: ProductGridProps) {
                 </button>
               </div>
             </div>
+            </Link>
           </div>
         ))}
       </div>
