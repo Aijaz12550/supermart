@@ -1,8 +1,7 @@
-import Image from "next/image"
-import Link from "next/link"
-import FreshVegetables from "../assets/fresh-vegetables.jpg"
-import BeautyProducts from "../assets/beauty-products.jpg"
-
+import Image from "next/image";
+import Link from "next/link";
+import FreshVegetables from "../assets/fresh-vegetables.jpg";
+import BeautyProducts from "../assets/beauty-products.jpg";
 
 export default function PromoCards() {
   return (
@@ -10,7 +9,9 @@ export default function PromoCards() {
       {/* Fresh Vegetables Card */}
       <div className="relative flex-1 overflow-hidden rounded-lg bg-gray-100">
         <div className="relative z-10 p-6 flex flex-col h-full">
-          <p className="text-base font-light text-gray-700 mb-1">Enjoy upto 20% Off on</p>
+          <p className="text-base font-light text-gray-700 mb-1">
+            Enjoy upto 20% Off on
+          </p>
           <h2 className="text-3xl font-bold text-gray-900 mb-auto">
             Fresh
             <br />
@@ -61,5 +62,5 @@ export default function PromoCards() {
         </div>
       </div>
     </div>
-  )
+  );
 }

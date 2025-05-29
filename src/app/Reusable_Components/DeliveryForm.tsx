@@ -1,7 +1,7 @@
 "use clientS";
 import React, { useState } from "react";
 import { DropDownIcon, InfoIcon } from "../components/Icon";
-import { useForm, useFormContext } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 
 type CheckoutFormData = {
   contact: string;
@@ -81,8 +81,10 @@ const DeliveryForm = () => {
             }`}
           />
           {errors.address && (
-          <p className="text-red-500 text-sm mt-1">{errors.address.message}</p>
-        )}
+            <p className="text-red-500 text-sm mt-1">
+              {errors.address.message}
+            </p>
+          )}
         </div>
 
         <div className="mb-3">
@@ -90,14 +92,17 @@ const DeliveryForm = () => {
             {...register("apartment", { required: "Apartment is required" })}
             type="text"
             placeholder="Apartment, suite etc."
-          className={`w-full p-3 border rounded-md focus:outline-none ${
-            errors.apartment
-              ? "border-red-500 ring-2 ring-red-300"
-              : "border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-transparent"
-          }`}          />
-           {errors.apartment && (
-          <p className="text-red-500 text-sm mt-1">{errors.apartment.message}</p>
-        )}
+            className={`w-full p-3 border rounded-md focus:outline-none ${
+              errors.apartment
+                ? "border-red-500 ring-2 ring-red-300"
+                : "border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-transparent"
+            }`}
+          />
+          {errors.apartment && (
+            <p className="text-red-500 text-sm mt-1">
+              {errors.apartment.message}
+            </p>
+          )}
         </div>
 
         <div className="flex flex-col md:flex-row gap-3 mb-3">
@@ -108,10 +113,10 @@ const DeliveryForm = () => {
             className={`flex-1 p-3 border border-gray-300 rounded-md 
               focus:outline-none 
               ${
-            errors.city
-              ? "border-red-500 ring-2 ring-red-300"
-              : "border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-transparent"
-          }`}
+                errors.city
+                  ? "border-red-500 ring-2 ring-red-300"
+                  : "border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-transparent"
+              }`}
           />
           {errors.city && (
             <p className="text-red-500 text-sm mt-1">{errors.city.message}</p>
@@ -123,13 +128,15 @@ const DeliveryForm = () => {
             className={`flex-1 p-3 border border-gray-300 rounded-md 
               focus:outline-none 
               ${
-            errors.postalCode
-              ? "border-red-500 ring-2 ring-red-300"
-              : "border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-transparent"
-          }`}
+                errors.postalCode
+                  ? "border-red-500 ring-2 ring-red-300"
+                  : "border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-transparent"
+              }`}
           />
           {errors.postalCode && (
-            <p className="text-red-500 text-sm  mt-1">{errors.postalCode.message}</p>
+            <p className="text-red-500 text-sm  mt-1">
+              {errors.postalCode.message}
+            </p>
           )}
         </div>
 
@@ -139,12 +146,13 @@ const DeliveryForm = () => {
             type="text"
             {...register("phone", { required: "Phone is required" })}
             placeholder="Phone"
-className={`w-full p-3 border rounded-md focus:outline-none pr-10 ${
-            errors.phone
-              ? "border-red-500 ring-2 ring-red-300"
-              : "border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-transparent"
-          }`}          />
-          <InfoIcon />          
+            className={`w-full p-3 border rounded-md focus:outline-none pr-10 ${
+              errors.phone
+                ? "border-red-500 ring-2 ring-red-300"
+                : "border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-transparent"
+            }`}
+          />
+          <InfoIcon />
         </div>
         {errors.phone && (
           <p className="text-red-500 text-sm mb-3">{errors.phone.message}</p>

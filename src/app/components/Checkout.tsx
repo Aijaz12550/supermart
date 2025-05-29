@@ -1,5 +1,4 @@
 "use client";
-
 import { useForm, FormProvider } from "react-hook-form";
 import { useState } from "react";
 import DeliveryForm from "../Reusable_Components/DeliveryForm";
@@ -7,8 +6,8 @@ import PaymentForm from "../Reusable_Components/PaymentForm";
 import BillingForm from "../Reusable_Components/BillingForm";
 
 type CheckoutFormData = {
-  contact: string
-}
+  contact: string;
+};
 
 export default function CheckoutForm() {
   const methods = useForm<CheckoutFormData>();
@@ -45,7 +44,7 @@ export default function CheckoutForm() {
         }
       `}
             />
-            {errors.contact?.message  && (
+            {errors.contact?.message && (
               <p className="text-red-500 text-sm mt-1">
                 {errors.contact.message}
               </p>

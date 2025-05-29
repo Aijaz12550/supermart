@@ -1,8 +1,15 @@
-import Image from 'next/image'
-import React from 'react'
-import logo from "../assets/logo.png"
-import Link from 'next/link'
-import {XIcon, FaceBookIcon, InstaIcon, TiktokIcon, CallIcon, MailIcon} from '../components/Icon'
+import Image from "next/image";
+import React from "react";
+import logo from "../assets/logo.png";
+import Link from "next/link";
+import {
+  XIcon,
+  FaceBookIcon,
+  InstaIcon,
+  TiktokIcon,
+  CallIcon,
+  MailIcon,
+} from "../components/Icon";
 
 const Footer = () => {
   return (
@@ -20,111 +27,150 @@ const Footer = () => {
                 priority
               />
             </div>
-            <p className="mb-6 text-black font-medium text-sm sm:pr-8"> Lorem ipsum dolor sit amet consectetur. Nisi pellentesque tortor iaculis ut non magna in pharetra. Aenean fermentum tortor mauris ultricies nec. Mauris elementum risus etiam gravida sit turpis non. Ligula quis amet non eu justo massa sit blandit in.</p>
+            <p className="mb-6 text-black font-medium text-sm sm:pr-8">
+              {" "}
+              Lorem ipsum dolor sit amet consectetur. Nisi pellentesque tortor
+              iaculis ut non magna in pharetra. Aenean fermentum tortor mauris
+              ultricies nec. Mauris elementum risus etiam gravida sit turpis
+              non. Ligula quis amet non eu justo massa sit blandit in.
+            </p>
             <div className="flex gap-4">
-
-                
-              <Link  href="" target="_blank" className="text-black">
-              <FaceBookIcon/>
+              <Link href="" target="_blank" className="text-black">
+                <FaceBookIcon />
               </Link>
 
-              <Link  href="" target="_blank" className="text-black">
-              <InstaIcon/>
+              <Link href="" target="_blank" className="text-black">
+                <InstaIcon />
               </Link>
 
-              <Link  href="https://www.linkedin.com/in/muhammad-salman-158213287/" target="_blank" className="text-black">
-              <XIcon/>
+              <Link
+                href="https://www.linkedin.com/in/muhammad-salman-158213287/"
+                target="_blank"
+                className="text-black"
+              >
+                <XIcon />
               </Link>
 
-              <Link  href="https://github.com/Salman-Aijaz/" target="_blank" className="text-black">
-              <TiktokIcon/>
+              <Link
+                href="https://github.com/Salman-Aijaz/"
+                target="_blank"
+                className="text-black"
+              >
+                <TiktokIcon />
               </Link>
             </div>
           </div>
 
           <div>
-            <div className="mb-4 font-medium text-sm uppercase   text-[#828282]">My Account</div>
+            <div className="mb-4 font-medium text-sm uppercase   text-[#828282]">
+              My Account
+            </div>
 
             <nav className="flex flex-col gap-4 font-medium text-base">
               <div>
-                <Link href="#" className="text-black">Tracking Order</Link>
+                <Link href="#" className="text-black">
+                  Tracking Order
+                </Link>
               </div>
 
               <div>
-                <Link href="#" className="text-black">Shipping</Link>
+                <Link href="#" className="text-black">
+                  Shipping
+                </Link>
               </div>
 
               <div>
-                <Link href="#" className="text-black">WishList</Link>
+                <Link href="#" className="text-black">
+                  WishList
+                </Link>
               </div>
 
               <div>
-                <Link href="#" className="text-black">My Account</Link>
+                <Link href="#" className="text-black">
+                  My Account
+                </Link>
               </div>
 
-              
               <div>
-                <Link href="#" className="text-black">Order History</Link>
+                <Link href="#" className="text-black">
+                  Order History
+                </Link>
               </div>
 
-              
               <div>
-                <Link href="#" className="text-black">Returns</Link>
+                <Link href="#" className="text-black">
+                  Returns
+                </Link>
               </div>
             </nav>
           </div>
           <div>
-
-            <div className="mb-4 font-medium text-sm uppercase  text-[#828282]">Information</div>
+            <div className="mb-4 font-medium text-sm uppercase  text-[#828282]">
+              Information
+            </div>
             <nav className="flex flex-col gap-4 font-medium text-base">
               <div>
-                <Link href="#" className="text-black  ">Our Story</Link>
+                <Link href="#" className="text-black  ">
+                  Our Story
+                </Link>
               </div>
 
               <div>
-                <Link href="#" className="text-black  ">Career</Link>
+                <Link href="#" className="text-black  ">
+                  Career
+                </Link>
               </div>
 
               <div>
-                <Link href="#" className="text-black  ">Privacy Policy</Link>
+                <Link href="#" className="text-black  ">
+                  Privacy Policy
+                </Link>
               </div>
 
               <div>
-                <Link href="#" className="text-black  ">Terms & Condition</Link>
+                <Link href="#" className="text-black  ">
+                  Terms & Condition
+                </Link>
               </div>
 
-              
               <div>
-                <Link href="#" className="text-black ">Latest News</Link>
+                <Link href="#" className="text-black ">
+                  Latest News
+                </Link>
               </div>
 
-              
               <div>
-                <Link href="#" className="text-black">Contact Us</Link>
+                <Link href="#" className="text-black">
+                  Contact Us
+                </Link>
               </div>
             </nav>
           </div>
 
           <div>
-            <div className="mb-4 font-medium text-sm uppercase  text-[#828282]">Talk To Us</div>
+            <div className="mb-4 font-medium text-sm uppercase  text-[#828282]">
+              Talk To Us
+            </div>
             <nav className="flex flex-col gap-4 font-medium text-base">
-              <div className='flex items-center gap-3 '>
-               <CallIcon/>
-                <Link href="#" className="text-black">+92 345 6627789</Link>
+              <div className="flex items-center gap-3 ">
+                <CallIcon />
+                <Link href="#" className="text-black">
+                  +92 345 6627789
+                </Link>
               </div>
 
-              <div className='flex items-center gap-3'>
-                <MailIcon/>
-                <Link href="#" className="text-black">supermart@support.com</Link>
+              <div className="flex items-center gap-3">
+                <MailIcon />
+                <Link href="#" className="text-black">
+                  supermart@support.com
+                </Link>
               </div>
-
             </nav>
           </div>
         </div>
-
       </footer>
     </div>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

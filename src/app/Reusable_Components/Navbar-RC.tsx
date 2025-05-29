@@ -1,4 +1,4 @@
-import {  ReactNode, FC } from "react";
+import { ReactNode, FC } from "react";
 import Link from "next/link";
 import { useCart } from "../context/CartContext";
 
@@ -20,7 +20,6 @@ type UserControlProps = {
   subtitle: string;
 };
 
-
 // Reusable components
 const NavLink: FC<NavLinkProps> = ({ href, children }) => (
   <Link href={href} className="text-base font-light relative group">
@@ -34,7 +33,6 @@ const SocialIcon: FC<SocialIconProps> = ({ Icon, href = "#" }) => (
     <Icon />
   </a>
 );
-
 
 const UserControl: FC<UserControlProps> = ({ Icon, title, subtitle }) => (
   <div className="flex items-center">
@@ -71,4 +69,4 @@ const ContactInfo: FC = () => (
   </div>
 );
 
-export { NavLink, SocialIcon, UserControl, ContactInfo,CartComponent };
+export { NavLink, SocialIcon, UserControl, ContactInfo, CartComponent };

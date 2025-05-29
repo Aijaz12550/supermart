@@ -1,5 +1,5 @@
-import React from 'react';
-import Image from 'next/image';
+import React from "react";
+import Image from "next/image";
 import bannerfirst from "../assets/bannerfirst.png";
 import bannersecond from "../assets/bannersecond.jpg";
 import bannerthird from "../assets/bannerthird.jpg";
@@ -19,7 +19,7 @@ const Banner = () => {
             priority
           />
         </div>
-        
+
         <div className="w-full md:w-1/3">
           <Image
             src={bannersecond}
@@ -31,7 +31,7 @@ const Banner = () => {
             priority
           />
         </div>
-        
+
         <div className="w-full md:w-1/3">
           <Image
             src={bannerfirst}

@@ -1,10 +1,9 @@
 export default function OrderTrackingForm() {
-
   return (
     <div className="w-full max-w-md border border-gray-200 rounded-lg p-6">
       <h1 className="text-4xl font-medium mb-6">Track Your Order</h1>
 
-      <form  className="space-y-4">
+      <form className="space-y-4">
         <div>
           <input
             type="text"
@@ -27,9 +26,9 @@ export default function OrderTrackingForm() {
           type="submit"
           className="w-full bg-green-500 hover:bg-green-600 text-white font-medium py-3 px-4 rounded-lg transition duration-200 ease-in-out"
         >
-            Track Order
+          Track Order
         </button>
       </form>
     </div>
-  )
+  );
 }

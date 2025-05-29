@@ -1,5 +1,5 @@
 "use client";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import Breadcrumbs from "../Reusable_Components/BreadCrumbs";
 import ServiceFeatures from "../Reusable_Components/ServiceFeatures";
 import ProductDescription from "../Reusable_Components/ProductDescription";
@@ -151,11 +151,7 @@ export default function ProductPage() {
               onClick={handleAddToCart}
               disabled={loading}
             >
-              {loading ? (
-                <LoaderIcon  />
-              ) : (
-                "Add to Cart"
-              )}
+              {loading ? <LoaderIcon /> : "Add to Cart"}
             </button>
             <button className="border border-green-500 text-green-500 hover:bg-green-50 py-3 rounded-md font-medium transition-colors cursor-pointer">
               Buy It Now

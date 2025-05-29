@@ -4,14 +4,14 @@ import { useFormContext } from "react-hook-form";
 
 const BillingForm = () => {
   const [billingMethod, setBillingMethod] = useState("cod");
-const { register, handleSubmit } = useFormContext();
+  const { register, handleSubmit } = useFormContext();
 
   const generateShortTrackingId = () => {
     const randomPart = Math.random().toString(36).substring(2, 6).toUpperCase();
     return `${randomPart}`;
   };
 
-  const onSubmit = (data:any) => {
+  const onSubmit = (data: any) => {
     console.log("Form Data:", data); // for debug
     const trackingId = generateShortTrackingId();
     localStorage.setItem("tracking_id", trackingId);
@@ -57,9 +57,10 @@ const { register, handleSubmit } = useFormContext();
           </label>
         </div>
       </section>
-      <button 
-      onClick={handleSubmit(onSubmit)}
-      className="w-full bg-green-500 hover:bg-green-600 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
+      <button
+        onClick={handleSubmit(onSubmit)}
+        className="w-full bg-green-500 hover:bg-green-600 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+      >
         Complete order
       </button>
     </>

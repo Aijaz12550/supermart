@@ -73,7 +73,7 @@ export default function ProductGrid({ title, products }: ProductGridProps) {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
           {products.map((product) => (
-            <>
+            
                 <div
                   key={product.id}
                   className="rounded-lg overflow-hidden shadow-md cursor-pointer hover:shadow-lg transition-shadow duration-300"
@@ -116,7 +116,6 @@ export default function ProductGrid({ title, products }: ProductGridProps) {
                   </div>
               </Link>
                 </div>
-            </>
           ))}
         </div>
 

@@ -1,24 +1,16 @@
 "use client";
 import Image from "next/image";
-import ProductImage from "../assets/product.png";
 import { useCart } from "../context/CartContext";
 
 export function CheckoutList() {
-  const {
-      cartItems,
-    } = useCart();
+  const { cartItems } = useCart();
 
-    
   const subTotal = cartItems.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
   );
   const shippingCharges = 200; // static or dynamic
   const total = subTotal + shippingCharges;
-
-  // const subtotal = 2500; 
-  // const shippingCharges = 200;
-  // const total = 3200; 
 
   return (
     <div className="space-y-4">
@@ -52,7 +44,11 @@ export function CheckoutList() {
 
       {/* Discount Code */}
       <div className="flex space-x-2 pt-2">
-        <input type="text" placeholder="Discount code" className="flex-1 border border-[#E2E2E2] rounded-md px-3" />
+        <input
+          type="text"
+          placeholder="Discount code"
+          className="flex-1 border border-[#E2E2E2] rounded-md px-3"
+        />
         <button className="bg-gray-100 hover:bg-gray-200 px-10 py-2  rounded-md  text-gray-700 font-medium">
           Apply
         </button>
@@ -63,7 +59,7 @@ export function CheckoutList() {
         <div className="flex justify-between text-gray-600">
           <span>Sub Total:</span>
           <span>Rs {subTotal}</span>
-        </div>   
+        </div>
         <div className="flex justify-between text-gray-600">
           <span>Shipping Charges:</span>
           <span>Rs {shippingCharges}</span>
