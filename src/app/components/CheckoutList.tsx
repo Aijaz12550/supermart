@@ -1,16 +1,37 @@
 "use client";
 import Image from "next/image";
 import { useCart } from "../context/CartContext";
+import { useState } from "react";
 
 export function CheckoutList() {
   const { cartItems } = useCart();
+  const [discountCode, setDiscountCode] = useState("");
+  const [appliedCode, setAppliedCode] = useState("");
+  const [discountAmount, setDiscountAmount] = useState(0);
 
   const subTotal = cartItems.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
   );
-  const shippingCharges = 200; // static or dynamic
-  const total = subTotal + shippingCharges;
+  const shippingCharges = 200;
+  const total = subTotal + shippingCharges - discountAmount;
+
+  const applyDiscount = () => {
+    const code = discountCode.trim().toUpperCase();
+
+    if (code === "CODE A") {
+      const discount = 0.1 * (subTotal + shippingCharges);
+      setDiscountAmount(discount);
+      setAppliedCode(code);
+    } else if (code === "CODE B") {
+      setDiscountAmount(10);
+      setAppliedCode(code);
+    } else {
+      setDiscountAmount(0);
+      setAppliedCode("");
+      alert("Invalid discount code");
+    }
+  };
 
   return (
     <div className="space-y-4">
@@ -46,10 +67,14 @@ export function CheckoutList() {
       <div className="flex space-x-2 pt-2">
         <input
           type="text"
+          value={discountCode}
           placeholder="Discount code"
           className="flex-1 border border-[#E2E2E2] rounded-md px-3"
+          onChange={(e) => setDiscountCode(e.target.value)}
         />
-        <button className="bg-gray-100 hover:bg-gray-200 px-10 py-2  rounded-md  text-gray-700 font-medium">
+        <button 
+        onClick={applyDiscount}
+        className="bg-gray-100 hover:bg-gray-200 px-10 py-2  rounded-md  text-gray-700 font-medium">
           Apply
         </button>
       </div>
@@ -64,6 +89,12 @@ export function CheckoutList() {
           <span>Shipping Charges:</span>
           <span>Rs {shippingCharges}</span>
         </div>
+        {discountAmount > 0 && (
+          <div className="flex justify-between font-medium">
+            <span>Discount ({appliedCode}):</span>
+            <span> Rs {discountAmount.toFixed(0)}</span>
+          </div>
+        )}
         <div className="flex justify-between pt-4 mt-2 border-t border-[#C0C0C0] text-2xl font-bold text-gray-600">
           <span>Total</span>
           <span>Rs {total}</span>
