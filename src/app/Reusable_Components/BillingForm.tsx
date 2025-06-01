@@ -1,10 +1,13 @@
 "use client";
 import React, { useState } from "react";
 import { useFormContext } from "react-hook-form";
+import { useRouter } from "next/navigation"; // ✅ for App Router
 
 const BillingForm = () => {
   const [billingMethod, setBillingMethod] = useState("cod");
   const { register, handleSubmit } = useFormContext();
+
+  const router = useRouter(); // ✅
 
   const generateShortTrackingId = () => {
     const randomPart = Math.random().toString(36).substring(2, 6).toUpperCase();
@@ -16,6 +19,8 @@ const BillingForm = () => {
     const trackingId = generateShortTrackingId();
     localStorage.setItem("tracking_id", trackingId);
     alert(`Order placed! Your tracking ID is: ${trackingId}`);
+    router.push("/track"); // ✅ redirect after alert
+
   };
 
   return (
