@@ -90,7 +90,7 @@ export function CheckoutList() {
           <span>Rs {shippingCharges}</span>
         </div>
         {discountAmount > 0 && (
-          <div className="flex justify-between font-medium">
+          <div className="flex justify-between font-medium text-gray-600">
             <span>Discount ({appliedCode}):</span>
             <span> Rs {discountAmount.toFixed(0)}</span>
           </div>
