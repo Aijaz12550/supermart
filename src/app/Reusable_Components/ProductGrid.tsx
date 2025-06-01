@@ -73,49 +73,45 @@ export default function ProductGrid({ title, products }: ProductGridProps) {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
           {products.map((product) => (
-            
-                <div
-                  key={product.id}
-                  className="rounded-lg overflow-hidden shadow-md cursor-pointer hover:shadow-lg transition-shadow duration-300"
-                  onClick={() => handleProductClick(product)}
-                >
-              <Link href={`/product/${product.id}`}>
-                  <div className="p-4">
-                    <Image
-                      src={product.image}
-                      alt={product.name}
-                      className="w-full h-52 object-contain mb-4"
-                    />
-                    <h3 className="font-semibold text-gray-800 text-sm h-10">
-                      {product.name}
-                    </h3>
-                    {product.description && (
-                      <p className="text-gray-600 text-xs mb-2">
-                        {product.description}
-                      </p>
-                    )}
-                    <div className="flex justify-between items-center mt-2">
-                      <span className="font-bold text-gray-900">
-                        {product.price}
-                      </span>
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation(); // Prevent triggering the parent div's onClick
-                          handleAddToCart(product);
-                        }}
-                        disabled={loadingId === product.id}
-                        className="text-black text-xs py-1 px-2 rounded transition-colors duration-200 border-2 border-gray-100 cursor-pointer flex items-center gap-2"
-                      >
-                        {loadingId === product.id ? (
-                          <LoaderIcon />
-                        ) : (
-                          "Add to cart"
-                        )}
-                      </button>
-                    </div>
-                  </div>
-              </Link>
+            <div
+              key={product.id}
+              className="rounded-lg overflow-hidden shadow-md cursor-pointer hover:shadow-lg transition-shadow duration-300"
+              onClick={() => handleProductClick(product)}
+            >
+              <div className="p-4">
+                <Link href={`/product/${product.id}`}>
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-52 object-contain mb-4"
+                  />
+                </Link>
+
+                <h3 className="font-semibold text-gray-800 text-sm h-10">
+                  {product.name}
+                </h3>
+                {product.description && (
+                  <p className="text-gray-600 text-xs mb-2">
+                    {product.description}
+                  </p>
+                )}
+                <div className="flex justify-between items-center mt-2">
+                  <span className="font-bold text-gray-900">
+                    {product.price}
+                  </span>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation(); // Prevent triggering the parent div's onClick
+                      handleAddToCart(product);
+                    }}
+                    disabled={loadingId === product.id}
+                    className="text-black text-xs py-1 px-2 rounded transition-colors duration-200 border-2 border-gray-100 cursor-pointer flex items-center gap-2"
+                  >
+                    {loadingId === product.id ? <LoaderIcon /> : "Add to cart"}
+                  </button>
                 </div>
+              </div>
+            </div>
           ))}
         </div>
 
